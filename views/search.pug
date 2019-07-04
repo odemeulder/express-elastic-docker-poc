@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Search
+  form(action="/search", method="get")
+    p
+      | keyword: 
+      input(type='text', name='q', value='')
+    input(type='submit', value='Search')
+  if keyword
+    p Search results for: #{keyword}
+  if results.length
+    ul
+      each result in results
+        li #{result.name} (age #{result.age}) #{result.address}
+  if results.length == 0
+    p No results found

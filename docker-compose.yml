@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - odm-elastic-search
+  odm-elastic-search:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.2.0"
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - ~/learn/elastic/db:/usr/share/elasticsearch/data
