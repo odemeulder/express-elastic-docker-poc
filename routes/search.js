@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const { Client } = require('@elastic/elasticsearch')
-const client = new Client({ node: 'http://odm-elastic-search:9200' })
+const client = new Client({ node: 'http://es01:9200' })
 
 const hitToSearchResultMapper = h => (
   {
